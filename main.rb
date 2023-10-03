@@ -16,31 +16,6 @@ datos = [ {:name => 'John',
     :calle => "Ubunto",
     :altura => 1234}
 ]
-class persona
-  attr_accesor :nombre, :apellido, :dni, :provincia, :ciudad, :calle, :altura
-  
-  def initialize(nombre,dni,apellido,provincia,ciudad,calle,altura)
-    @nombre = nombre
-    @dni = dni
-    @apellido = apellido
-    @provincia = persona
-    @ciudad = ciudad
-    @calle = calle
-    @altura = altura
-  end
-
-  def agregarMascota(nombre,raza)
-    @nombreMascota = nombre
-    @raza = raza
-  end
-
-  class Mascota
-    attr_accesor :nombre, :raza
-    def initialize(nombre, raza)
-      @nombre = nombre
-      @raza =raza
-    end 
-
 
 class Persona
     attr_accessor :nombre, :dni, :apellido, :provinica, :ciudad, :calle, :altura
@@ -63,8 +38,6 @@ class Persona
 
 end
 
-
-
 class Mascota
   attr_accessor :nombre, :raza
 
@@ -81,3 +54,9 @@ mascotas.push(Mascota.new("Cobe","Border collie"))
 mascotas.push(Mascota.new("Ringo","Caniche")) 
 mascotas.push(Mascota.new("Hercules", "Yorkshire"))
 
+personas = Array.new
+datos.each do |dato|
+  n, d, a, pro, ci, ca , al = dato.values
+  personas.push(Persona.new(n, d, a, pro, ci, ca , al))
+end
+p personas

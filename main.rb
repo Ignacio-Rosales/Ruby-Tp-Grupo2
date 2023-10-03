@@ -17,7 +17,6 @@ datos = [ {:name => 'John',
     :altura => 1234}
 ]
 
-
 class Persona
     attr_accessor :nombre, :dni, :apellido, :provinica, :ciudad, :calle, :altura
     
@@ -39,8 +38,6 @@ class Persona
 
 end
 
-
-
 class Mascota
   attr_accessor :nombre, :raza
 
@@ -57,3 +54,9 @@ mascotas.push(Mascota.new("Cobe","Border collie"))
 mascotas.push(Mascota.new("Ringo","Caniche")) 
 mascotas.push(Mascota.new("Hercules", "Yorkshire"))
 
+personas = Array.new
+datos.each do |dato|
+  n, d, a, pro, ci, ca , al = dato.values
+  personas.push(Persona.new(n, d, a, pro, ci, ca , al))
+end
+p personas

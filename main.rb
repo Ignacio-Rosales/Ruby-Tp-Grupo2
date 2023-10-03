@@ -1,3 +1,5 @@
+
+
 datos = [ {:name => 'John', 
     :dni => 2314151, 
     :apellido => 'Salchichon',
@@ -14,6 +16,29 @@ datos = [ {:name => 'John',
     :calle => "Ubunto",
     :altura => 1234}
 ]
+
+
+class Persona
+    attr_accessor :nombre, :dni, :apellido, :provinica, :ciudad, :calle, :altura
+    
+    def initialize(nombre, dni, apellido, provincia, ciudad, calle, altura)
+        @nombre = nombre
+        @dni = dni
+        @apellido = apellido
+        @provincia = provincia
+        @ciudad = ciudad
+        @calle = calle
+        @altura = altura
+    end
+
+    def agregarMascota(nombre, raza)
+        @nombreMascota = nombre
+        @raza = raza
+    end
+
+
+end
+
 
 
 class Mascota

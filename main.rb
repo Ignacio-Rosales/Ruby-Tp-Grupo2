@@ -28,6 +28,14 @@ class Persona
         @altura = altura
     end
 
+    def inspect()
+        p "estas es un inspect"
+    end
+
+    def to_s()
+        p "to_string estas en"
+    end
+
     def agregarMascota(nombre, raza)
         @nombreMascota = nombre
         @raza = raza
@@ -64,11 +72,28 @@ end
 
 def asignaMascota(array, mascota)
     array.each do |persona|
-        i = rand(8)
+        i = rand(7)
         persona.agregarMascota(mascota[i].nombre, mascota[i].raza)
     end
-    p array
+    array
 end
 
 personas = crearPersona(datos)
-asignaMascota(personas, mascotas)
+personas = asignaMascota(personas, mascotas)
+
+file = File.open("personas.txt", 'w')
+personas.each do |persona|
+    file.write(persona)
+    file.write(" ")
+end
+
+personas.each_with_index do |persona, i|
+    p i
+    p persona
+    puts persona
+end
+
+# file.write("personas.txt", personas)
+# file.close
+
+# puts Object.methods

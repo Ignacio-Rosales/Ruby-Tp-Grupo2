@@ -106,9 +106,19 @@ def serializar(arrayPersonas)
 end
 
 def escritura(arrayPersonas)
-    file = File.open("personas.txt", 'w')
-    yaml = YAML::dump(serializar(arrayPersonas))
-    file.write(yaml)
+    begin 
+        file = File.open("personas.txt", 'w')
+        yaml = YAML::dump(serializar(arrayPersonas))
+        file.write(yaml)
+    rescue NameError => error
+        puts"Ocurrio un error en nombres o variables\t" + error.message
+    rescue FileNotFoundError => error
+        puts "No se encontro el archivo que desea\t" + error.message
+    rescue IOError => error
+        puts "Error al escribir el archivo\t" + error.message
+    rescue StandardError => error
+        puts "Ocurrio un error no contemplado\t" + error.message
+    end
     file.close
 end
 

@@ -1,4 +1,3 @@
-
 require 'yaml'
 
 datos = [ {:nombre => 'John', 
@@ -31,7 +30,6 @@ class Persona
         @altura = altura
     end
 
-
     def agregarMascota(nombre, raza)
         @nombreMascota = nombre
         @raza = raza
@@ -52,10 +50,8 @@ end
 mascotas = [Mascota.new("Manolo", "Yorkshire")]
 mascotas.push(Mascota.new("Junior", "Labrador")) 
 mascotas.push(Mascota.new("Cobe","Border collie")) 
-mascotas.push(Mascota.new("Ringo","Caniche")) 
+mascotas.push(Mascota.new("Ringo","Caniche"))
 mascotas.push(Mascota.new("Hercules", "Yorkshire"))
-mascotas.push(Mascota.new("India", "Pastor aleman"))
-mascotas.push(Mascota.new("Colo", "pitbull"))
 
 def crearPersona(a)
     per = Array.new
@@ -66,12 +62,27 @@ def crearPersona(a)
     per
 end
 
-def asignaMascota(array, mascota)
-    array.each do |persona|
-        i = rand(7)
-        persona.agregarMascota(mascota[i].nombre, mascota[i].raza)
+def asignaMascota(arrayPersonas, mascotasExistentes)
+    buffer = 9
+    arrayPersonas.each_with_index do |persona, i|
+        if i == 0 
+            buffer = rand(5)
+            persona.agregarMascota(mascotasExistentes[buffer].nombre, mascotasExistentes[buffer].raza)
+        else
+            numero = rand(4)
+            mascotaSinRepetir = mascotasExistentes
+            mascotaSinRepetir.delete_at(buffer)
+            persona.agregarMascota(mascotaSinRepetir[numero].nombre, mascotaSinRepetir[numero].raza)
+            if numero < buffer
+                buffer = numero
+                # si el numero es menor al buffer, no tenemos problemas
+            else numero >= buffer
+                buffer = numero + 1
+                # tendriamos que ajustar el hecho de eliminar uno de los datos del array
+            end
+        end
     end
-    array
+    arrayPersonas
 end
 
 personas = crearPersona(datos)

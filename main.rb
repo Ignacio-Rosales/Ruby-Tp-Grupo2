@@ -50,5 +50,25 @@ mascotas.push(Mascota.new("Junior", "Labrador"))
 mascotas.push(Mascota.new("Cobe","Border collie")) 
 mascotas.push(Mascota.new("Ringo","Caniche")) 
 mascotas.push(Mascota.new("Hercules", "Yorkshire"))
+mascotas.push(Mascota.new("India", "Pastor aleman"))
+mascotas.push(Mascota.new("Colo", "pitbull"))
 
-datos.each do |d| 
+def crearPersona(a)
+    per = Array.new
+    a.each do |dato|
+        n, d, a, pro, ci, ca , al = dato.values
+        per.push(Persona.new(n, d, a, pro, ci, ca , al))
+    end
+    per
+end
+
+def asignaMascota(array, mascota)
+    array.each do |persona|
+        i = rand(8)
+        persona.agregarMascota(mascota[i].nombre, mascota[i].raza)
+    end
+    p array
+end
+
+personas = crearPersona(datos)
+asignaMascota(personas, mascotas)

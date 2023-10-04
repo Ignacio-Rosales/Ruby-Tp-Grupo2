@@ -1,6 +1,4 @@
-
-
-datos = [ {:name => 'John', 
+datos = [ {:nombre => 'John', 
     :dni => 2314151, 
     :apellido => 'Salchichon',
     :provincia => "santa fe",
@@ -8,7 +6,7 @@ datos = [ {:name => 'John',
     :calle => "San martin",
     :altura => 123},
     
-  {:name => 'Arco', 
+  {:nombre => 'Arco', 
     :dni => 1245124, 
     :apellido => 'Salomon',
     :provincia => "santa fe",
@@ -16,7 +14,6 @@ datos = [ {:name => 'John',
     :calle => "Ubunto",
     :altura => 1234}
 ]
-
 
 class Persona
     attr_accessor :nombre, :dni, :apellido, :provinica, :ciudad, :calle, :altura
@@ -36,10 +33,7 @@ class Persona
         @raza = raza
     end
 
-
 end
-
-
 
 class Mascota
   attr_accessor :nombre, :raza
@@ -57,3 +51,4 @@ mascotas.push(Mascota.new("Cobe","Border collie"))
 mascotas.push(Mascota.new("Ringo","Caniche")) 
 mascotas.push(Mascota.new("Hercules", "Yorkshire"))
 
+datos.each do |d| 

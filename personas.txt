@@ -1,21 +1,23 @@
 ---
 - |-
-  nombre: John
-  dni: 2314151
-  apellido: Salchichon
-  provincia: santa fe
-  ciudad: San lorenzo
-  calle: San martin
-  altura: 123
-  mascota: Cobe
-  raza: Border collie
+  Personas con mascotas asignadas
+  Nombre: John
+  Dni: 2314151
+  Apellido: Salchichon
+  Provincia: santa fe
+  Ciudad: San lorenzo
+  Calle: San martin
+  Altura: 123
+  Nombre mascota: Ringo
+  Raza: Caniche
 - |-
-  nombre: Arco
-  dni: 1245124
-  apellido: Salomon
-  provincia: santa fe
-  ciudad: Rosario
-  calle: Ubunto
-  altura: 1234
-  mascota: Hercules
-  raza: Yorkshire
+  Personas con mascotas asignadas
+  Nombre: Arco
+  Dni: 1245124
+  Apellido: Salomon
+  Provincia: santa fe
+  Ciudad: Rosario
+  Calle: Ubunto
+  Altura: 1234
+  Nombre mascota: India
+  Raza: Pastor aleman

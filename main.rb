@@ -4,7 +4,7 @@ require 'yaml'
 datos = [ {:nombre => 'John', 
     :dni => 2314151, 
     :apellido => 'Salchichon',
-    :provincia => "santa fe",
+    :provincia => "Santa fe",
     :ciudad => "San lorenzo",
     :calle => "San martin",
     :altura => 123},
@@ -12,7 +12,7 @@ datos = [ {:nombre => 'John',
   {:nombre => 'Arco', 
     :dni => 1245124, 
     :apellido => 'Salomon',
-    :provincia => "santa fe",
+    :provincia => "Santa fe",
     :ciudad => "Rosario",
     :calle => "Ubunto",
     :altura => 1234}
@@ -67,8 +67,12 @@ def crearPersona(a)
 end
 
 def asignaMascota(array, mascota)
-    array.each do |persona|
+    array.each_with_index do |persona, indice|
+        indice == 0 ? i = 0: masc = array[indice -1].nombreMascota
         i = rand(7)
+        if mascota[i].nombre == masc
+            i==6 ? i= rand(6) : i += 1
+        end
         persona.agregarMascota(mascota[i].nombre, mascota[i].raza)
     end
     array
@@ -78,22 +82,18 @@ personas = crearPersona(datos)
 personas = asignaMascota(personas, mascotas)
 pers = Array.new
 personas.each do |persona|
-    pers.push("nombre: #{persona.nombre}" + "\n" +
-    "dni: #{persona.dni}" + "\n" +
-    "apellido: #{persona.apellido}" + "\n" +
-    "provincia: #{persona.provincia}" + "\n" +
-    "ciudad: #{persona.ciudad}" + "\n" +
-    "calle: #{persona.calle}" + "\n" +
-    "altura: #{persona.altura}" + "\n" + 
-    "mascota: #{persona.nombreMascota}" + "\n" +
-    "raza: #{persona.raza}")
+    pers.push("Personas con mascotas asignadas" + "\n" +
+    "Nombre: #{persona.nombre}" + "\n" +
+    "Dni: #{persona.dni}" + "\n" +
+    "Apellido: #{persona.apellido}" + "\n" +
+    "Provincia: #{persona.provincia}" + "\n" +
+    "Ciudad: #{persona.ciudad}" + "\n" +
+    "Calle: #{persona.calle}" + "\n" +
+    "Altura: #{persona.altura}" + "\n" + 
+    "Nombre mascota: #{persona.nombreMascota}" + "\n" +
+    "Raza: #{persona.raza}")
 end
 file = File.open("personas.txt", 'w')
 yaml = YAML::dump(pers)
 file.write(yaml)
-
-
-# file.write("personas.txt", personas)
-# file.close
-
-# puts Object.methods
+file.close

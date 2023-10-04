@@ -1,3 +1,6 @@
+
+require 'yaml'
+
 datos = [ {:nombre => 'John', 
     :dni => 2314151, 
     :apellido => 'Salchichon',
@@ -16,7 +19,7 @@ datos = [ {:nombre => 'John',
 ]
 
 class Persona
-    attr_accessor :nombre, :dni, :apellido, :provinica, :ciudad, :calle, :altura
+    attr_accessor :nombre, :dni, :apellido, :provincia, :ciudad, :calle, :altura, :nombreMascota, :raza
     
     def initialize(nombre, dni, apellido, provincia, ciudad, calle, altura)
         @nombre = nombre
@@ -28,13 +31,6 @@ class Persona
         @altura = altura
     end
 
-    def inspect()
-        p "estas es un inspect"
-    end
-
-    def to_s()
-        p "to_string estas en"
-    end
 
     def agregarMascota(nombre, raza)
         @nombreMascota = nombre
@@ -80,18 +76,22 @@ end
 
 personas = crearPersona(datos)
 personas = asignaMascota(personas, mascotas)
-
-file = File.open("personas.txt", 'w')
+pers = Array.new
 personas.each do |persona|
-    file.write(persona)
-    file.write(" ")
+    pers.push("nombre: #{persona.nombre}" + "\n" +
+    "dni: #{persona.dni}" + "\n" +
+    "apellido: #{persona.apellido}" + "\n" +
+    "provincia: #{persona.provincia}" + "\n" +
+    "ciudad: #{persona.ciudad}" + "\n" +
+    "calle: #{persona.calle}" + "\n" +
+    "altura: #{persona.altura}" + "\n" + 
+    "mascota: #{persona.nombreMascota}" + "\n" +
+    "raza: #{persona.raza}")
 end
+file = File.open("personas.txt", 'w')
+yaml = YAML::dump(pers)
+file.write(yaml)
 
-personas.each_with_index do |persona, i|
-    p i
-    p persona
-    puts persona
-end
 
 # file.write("personas.txt", personas)
 # file.close

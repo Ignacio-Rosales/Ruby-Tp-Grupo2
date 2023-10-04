@@ -1,1 +1,21 @@
-to_string estas en to_string estas en 
+---
+- |-
+  nombre: John
+  dni: 2314151
+  apellido: Salchichon
+  provincia: santa fe
+  ciudad: San lorenzo
+  calle: San martin
+  altura: 123
+  mascota: Cobe
+  raza: Border collie
+- |-
+  nombre: Arco
+  dni: 1245124
+  apellido: Salomon
+  provincia: santa fe
+  ciudad: Rosario
+  calle: Ubunto
+  altura: 1234
+  mascota: Hercules
+  raza: Yorkshire

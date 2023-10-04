@@ -1,6 +1,3 @@
-
-require 'yaml'
-
 datos = [ {:nombre => 'John', 
     :dni => 2314151, 
     :apellido => 'Salchichon',
@@ -31,7 +28,6 @@ class Persona
         @altura = altura
     end
 
-
     def agregarMascota(nombre, raza)
         @nombreMascota = nombre
         @raza = raza
@@ -52,48 +48,68 @@ end
 mascotas = [Mascota.new("Manolo", "Yorkshire")]
 mascotas.push(Mascota.new("Junior", "Labrador")) 
 mascotas.push(Mascota.new("Cobe","Border collie")) 
-mascotas.push(Mascota.new("Ringo","Caniche")) 
+mascotas.push(Mascota.new("Ringo","Caniche"))
 mascotas.push(Mascota.new("Hercules", "Yorkshire"))
-mascotas.push(Mascota.new("India", "Pastor aleman"))
-mascotas.push(Mascota.new("Colo", "pitbull"))
 
-def crearPersona(a)
-    per = Array.new
-    a.each do |dato|
-        n, d, a, pro, ci, ca , al = dato.values
-        per.push(Persona.new(n, d, a, pro, ci, ca , al))
+def crearPersona(arregloDatos)
+    personas = Array.new
+    arregloDatos.each do |dato|
+        nom, dni, apel, prov, ciud, calle, altura = dato.values
+        personas.push(Persona.new(nom, dni, apel, prov, ciud, calle, altura))
     end
-    per
+    personas
 end
 
-def asignaMascota(array, mascota)
-    array.each do |persona|
-        i = rand(7)
-        persona.agregarMascota(mascota[i].nombre, mascota[i].raza)
+def asignaMascota(arrayPersonas, mascotasExistentes)
+    buffer = 9
+    arrayPersonas.each_with_index do |persona, i|
+        if i == 0 
+            buffer = rand(5)
+            persona.agregarMascota(mascotasExistentes[buffer].nombre, mascotasExistentes[buffer].raza)
+        else
+            numero = rand(4)
+            mascotaSinRepetir = mascotasExistentes
+            mascotaSinRepetir.delete_at(buffer)
+            persona.agregarMascota(mascotaSinRepetir[numero].nombre, mascotaSinRepetir[numero].raza)
+            if numero < buffer
+                buffer = numero
+                # si el numero es menor al buffer, no tenemos problemas
+            else numero >= buffer
+                buffer = numero + 1
+                # tendriamos que ajustar el hecho de eliminar uno de los datos del array
+            end
+        end
     end
-    array
+    arrayPersonas
 end
+
+require 'yaml'
 
 personas = crearPersona(datos)
+
 personas = asignaMascota(personas, mascotas)
-pers = Array.new
-personas.each do |persona|
-    pers.push("nombre: #{persona.nombre}" + "\n" +
-    "dni: #{persona.dni}" + "\n" +
-    "apellido: #{persona.apellido}" + "\n" +
-    "provincia: #{persona.provincia}" + "\n" +
-    "ciudad: #{persona.ciudad}" + "\n" +
-    "calle: #{persona.calle}" + "\n" +
-    "altura: #{persona.altura}" + "\n" + 
-    "mascota: #{persona.nombreMascota}" + "\n" +
-    "raza: #{persona.raza}")
+
+def serializar(arrayPersonas)
+    personas = Array.new
+    arrayPersonas.each do |persona|
+        personas.push("nombre: #{persona.nombre}" + "\n" +
+        "dni: #{persona.dni}" + "\n" +
+        "apellido: #{persona.apellido}" + "\n" +
+        "provincia: #{persona.provincia}" + "\n" +
+        "ciudad: #{persona.ciudad}" + "\n" +
+        "calle: #{persona.calle}" + "\n" +
+        "altura: #{persona.altura}" + "\n" + 
+        "mascota: #{persona.nombreMascota}" + "\n" +
+        "raza: #{persona.raza}")
+    end
+    personas
 end
-file = File.open("personas.txt", 'w')
-yaml = YAML::dump(pers)
-file.write(yaml)
 
+def escritura(arrayPersonas)
+    file = File.open("personas.txt", 'w')
+    yaml = YAML::dump(serializar(arrayPersonas))
+    file.write(yaml)
+    file.close
+end
 
-# file.write("personas.txt", personas)
-# file.close
-
-# puts Object.methods
+escritura(personas)

@@ -17,5 +17,5 @@
   ciudad: Rosario
   calle: Ubunto
   altura: 1234
-  mascota: Ringo
-  raza: Caniche
+  mascota: Hercules
+  raza: Yorkshire

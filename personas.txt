@@ -2,13 +2,13 @@
 - |-
   nombre: John
   dni: 2314151
-  apellido: Salchichon
-  provincia: santa fe
+  apellido: Lennon
+  provincia: Santa fe
   ciudad: San lorenzo
   calle: San martin
   altura: 123
-  mascota: Cobe
-  raza: Border collie
+  mascota: Ringo
+  raza: Caniche
 - |-
   nombre: Arco
   dni: 1245124
@@ -16,6 +16,26 @@
   provincia: santa fe
   ciudad: Rosario
   calle: Ubunto
-  altura: 1234
-  mascota: Hercules
+  altura: 987
+  mascota: Manolo
   raza: Yorkshire
+- |-
+  nombre: Saruman
+  dni: 7643789
+  apellido: Salomon
+  provincia: Buenos aires
+  ciudad: Capital
+  calle: Liniers
+  altura: 5493
+  mascota: Junior
+  raza: Labrador
+- |-
+  nombre: Frodo
+  dni: 1245124
+  apellido: Baggins
+  provincia: Arthedain
+  ciudad: La comarca
+  calle: Bolson cerrado
+  altura: 3
+  mascota: Ringo
+  raza: Caniche

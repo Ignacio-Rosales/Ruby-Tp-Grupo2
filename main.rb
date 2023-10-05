@@ -1,18 +1,32 @@
-datos = [ {:nombre => 'John', 
-    :dni => 2314151, 
-    :apellido => 'Salchichon',
-    :provincia => "santa fe",
-    :ciudad => "San lorenzo",
-    :calle => "San martin",
-    :altura => 123},
-    
-  {:nombre => 'Arco', 
-    :dni => 1245124, 
-    :apellido => 'Salomon',
-    :provincia => "santa fe",
-    :ciudad => "Rosario",
-    :calle => "Ubunto",
-    :altura => 1234}
+datos = [ 
+    {:nombre => 'John', 
+        :dni => 2314151, 
+        :apellido => 'Lennon',
+        :provincia => "Santa fe",
+        :ciudad => "San lorenzo",
+        :calle => "San martin",
+        :altura => 123},
+    {:nombre => 'Arco', 
+        :dni => 1245124, 
+        :apellido => 'Salomon',
+        :provincia => "santa fe",
+        :ciudad => "Rosario",
+        :calle => "Ubunto",
+        :altura => 987},
+    {:nombre => 'Saruman', 
+        :dni => 7643789, 
+        :apellido => 'Salomon',
+        :provincia => "Buenos aires",
+        :ciudad => "Capital",
+        :calle => "Liniers",
+        :altura => 5493},
+    {:nombre => 'Frodo', 
+        :dni => 1245124, 
+        :apellido => 'Baggins',
+        :provincia => "Arthedain",
+        :ciudad => "La comarca",
+        :calle => "Bolson cerrado",
+        :altura => 3}
 ]
 
 class Persona
@@ -45,11 +59,15 @@ class Mascota
 
 end
 
-mascotas = [Mascota.new("Manolo", "Yorkshire")]
-mascotas.push(Mascota.new("Junior", "Labrador")) 
-mascotas.push(Mascota.new("Cobe","Border collie")) 
-mascotas.push(Mascota.new("Ringo","Caniche"))
-mascotas.push(Mascota.new("Hercules", "Yorkshire"))
+def creacionMascotas
+    mascotas = [Mascota.new("Manolo", "Yorkshire")]
+    mascotas.push(Mascota.new("Junior", "Labrador")) 
+    mascotas.push(Mascota.new("Cobe","Border collie")) 
+    mascotas.push(Mascota.new("Ringo","Caniche"))
+    mascotas.push(Mascota.new("Hercules", "Yorkshire"))
+end
+
+mascotas = creacionMascotas()
 
 def crearPersona(arregloDatos)
     personas = Array.new
@@ -68,7 +86,7 @@ def asignaMascota(arrayPersonas, mascotasExistentes)
             persona.agregarMascota(mascotasExistentes[buffer].nombre, mascotasExistentes[buffer].raza)
         else
             numero = rand(4)
-            mascotaSinRepetir = mascotasExistentes
+            mascotaSinRepetir = mascotasExistentes.dup
             mascotaSinRepetir.delete_at(buffer)
             persona.agregarMascota(mascotaSinRepetir[numero].nombre, mascotaSinRepetir[numero].raza)
             if numero < buffer

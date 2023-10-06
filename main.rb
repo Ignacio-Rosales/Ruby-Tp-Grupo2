@@ -72,7 +72,13 @@ mascotas = creacionMascotas()
 def crearPersona(arregloDatos)
     personas = Array.new
     arregloDatos.each do |dato|
-        nom, dni, apel, prov, ciud, calle, altura = dato.values
+        nom = dato[:nombre]
+        dni = dato[:dni]
+        apel = dato[:apellido]
+        prov = dato[:provincia]
+        ciud = dato[:ciudad]
+        calle = dato[:calle]
+        altura = dato[:altura]
         personas.push(Persona.new(nom, dni, apel, prov, ciud, calle, altura))
     end
     personas

@@ -7,8 +7,8 @@
   ciudad: San lorenzo
   calle: San martin
   altura: 123
-  mascota: Ringo
-  raza: Caniche
+  mascota: Manolo
+  raza: Yorkshire
 - |-
   nombre: Arco
   dni: 1245124
@@ -17,8 +17,8 @@
   ciudad: Rosario
   calle: Ubunto
   altura: 987
-  mascota: Manolo
-  raza: Yorkshire
+  mascota: Cobe
+  raza: Border collie
 - |-
   nombre: Saruman
   dni: 7643789
@@ -27,8 +27,8 @@
   ciudad: Capital
   calle: Liniers
   altura: 5493
-  mascota: Junior
-  raza: Labrador
+  mascota: Manolo
+  raza: Yorkshire
 - |-
   nombre: Frodo
   dni: 1245124
@@ -37,5 +37,5 @@
   ciudad: La comarca
   calle: Bolson cerrado
   altura: 3
-  mascota: Ringo
-  raza: Caniche
+  mascota: Hercules
+  raza: Yorkshire
